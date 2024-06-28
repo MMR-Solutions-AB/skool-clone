@@ -1,5 +1,49 @@
+nav {
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+nav .container {
+    flex-grow: 1;
+}
+
+
 #skool-nav {
     display: flex;
+}
+
+#community-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    color: #909090;
+    padding-top: 20px;
+}
+
+#community-nav .community-nav-item {
+    height: 32px;
+    border-bottom: 5px solid #fff;
+}
+
+#community-nav .community-nav-item.active {
+    color: #000;
+    border-bottom: 5px solid #000;
+}
+
+#community-nav .community-nav-item:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+#skool-nav img[src$=".svg"] {
+    fill: #909090;
+    width: 24px;
+    height: 24px;
 }
 
 #skool-nav .skool-nav-item #community-logo {
