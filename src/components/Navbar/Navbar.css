@@ -1,4 +1,5 @@
 nav {
+    padding-top: 10px;
     display: flex;
     justify-content: center;
     background: #fff;
@@ -12,6 +13,56 @@ nav .container {
 
 #skool-nav {
     display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+#skool-nav .skool-nav-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#skool-nav .skool-nav-item input {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 48px;
+    min-height: unset;
+    border: 0px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(32, 33, 36);
+    line-height: 1.5;
+}
+
+#skool-nav #search-bar input[type="text"] {
+    padding-left: 60px;
+    width: 600px;
+    box-sizing: border-box;
+}
+
+#skool-nav #search-bar img {
+    position: absolute;
+    left: 17px;
+    height: 18px;
+    pointer-events: none;
+}
+
+#skool-nav input:active,
+#skool-nav input:focus {
+    border: 0px;
+    outline: none;
+}
+
+#skool-nav .skool-nav-item #community-name {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 #community-nav {
@@ -26,6 +77,8 @@ nav .container {
 }
 
 #community-nav .community-nav-item {
+    text-decoration: none;
+    color: inherit;
     height: 32px;
     border-bottom: 5px solid #fff;
 }

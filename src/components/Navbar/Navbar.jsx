@@ -2,6 +2,7 @@
 import './Navbar.css';
 
 import Container from './../Container/Container.jsx'; // Adjust the import path as necessary
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
@@ -12,12 +13,12 @@ function Navbar() {
                     <div id="skool-nav">
                         <div className="skool-nav-item">
                             <img id="community-logo" src="/mock-data/ps-logo.jpeg" />
-                            Programmering Sverige
+                            <span id="community-name">Programmering Sverige</span>
                             <img src='/icons/collapse-menu.svg' />
                         </div>
-                        <div className="skool-nav-item">
+                        <div id="search-bar" className="skool-nav-item">
                             <img src='/icons/search.svg' />
-                            <input type="text"></input>
+                            <input type="text" placeholder='Search'></input>
                         </div>
                         <div className="skool-nav-item">
                             <img src='/icons/dms.svg' />
@@ -28,24 +29,24 @@ function Navbar() {
 
                     {/* Community Specific nav */}
                     <div id="community-nav">
-                        <div className="community-nav-item active">
+                        <Link to="/" className="community-nav-item active">
                             Community
-                        </div>
-                        <div className="community-nav-item">
+                        </Link>
+                        <Link to="/classroom" className="community-nav-item">
                             Classroom
-                        </div>
-                        <div className="community-nav-item">
+                        </Link>
+                        <Link to="/calendar" className="community-nav-item">
                             Calendar
-                        </div>
-                        <div className="community-nav-item">
+                        </Link>
+                        <Link to="/members" className="community-nav-item">
                             Members
-                        </div>
-                        <div className="community-nav-item">
+                        </Link>
+                        <Link to="/leaderboard" className="community-nav-item">
                             Leaderboard
-                        </div>
-                        <div className="community-nav-item">
+                        </Link>
+                        <Link to="/about" className="community-nav-item">
                             About
-                        </div>
+                        </Link>
                     </div>
                 </Container>
             </nav>
