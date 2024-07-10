@@ -3,21 +3,27 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
-import logo from './logo.svg';
+import Container from './components/Container/Container';
+
+import CommunityPage from './pages/CommunityPage/CommunityPage';
 
 
 function App() {
   return (
-    <div className="App">
+    <div id="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<div>Community Page here</div>} />
-        <Route path="/classroom" element={<div>Classroom</div>} />
-        <Route path="/calendar" element={<div>Calendar</div>} />
-        <Route path="/members" element={<div>Members</div>} />
-        <Route path="/leaderboard" element={<div>Leaderboard</div>} />
-        <Route path="/about" element={<div>About</div>} />
-      </Routes>
+      <div id="pages-wrapper">
+        <Container>
+          <Routes>
+            <Route path="/" element={<CommunityPage />} />
+            <Route path="/classroom" element={<div>Classroom</div>} />
+            <Route path="/calendar" element={<div>Calendar</div>} />
+            <Route path="/members" element={<div>Members</div>} />
+            <Route path="/leaderboard" element={<div>Leaderboard</div>} />
+            <Route path="/about" element={<div>About</div>} />
+          </Routes>
+        </Container>
+      </div>
     </div>
   );
 }

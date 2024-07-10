@@ -5,3 +5,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+#pages-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#pages-wrapper .container {
+    flex-grow: 1;
+}
