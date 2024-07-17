@@ -1,33 +1,69 @@
 import React from 'react';
 import './Post.css';
 
-function Post() {
+function Post({ post }) {
+
+    const author = {
+        id: 1,
+        name: "Matt Bergstrom",
+        profileSrc: "https://via.placeholder.com/50"
+    };
+
     return (
-        <div className="Post">
-            <div className="pinned-top-banner">
-                <span>Pinned</span>
-                <button>Hide</button>
-            </div>
-            <div className="author-container">
-                <img src="/mock-data/profile-pic.jpeg" />
-                <p className="author-name">Matt Bergström</p>
-                <p>49m ago in Announcements</p>
-            </div>
-            <div className="post-content">
-                <h3>Title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ea adipisci a! Corporis architecto et deserunt, sequi delectus, dolorem suscipit dolor ullam eum dignissimos nesciunt, voluptatem quod expedita harum debitis?</p>
-            </div>
-            <div className="poll-container">
-                <button>Poll</button>
-                <span> 10 members have voted</span>
-            </div>
-            <div className="post-footer">
-                <img src='/icons/dms.svg' /> 2
-                <img src='/icons/dms.svg' /> 6
-                <img src="/mock-data/profile-pic.jpeg" />
-                <img src="/mock-data/profile-pic.jpeg" />
-                <img src="/mock-data/profile-pic.jpeg" />
-                Last comment 29m ago
+        <div className="Post card">
+            {post.pinned.isPinned ?
+                (
+                    <div className="card-header">
+                        <div className="pinned">Pinned</div>
+                        <div className="hide">Hide</div>
+                    </div>
+                )
+                : null
+            }
+            <div className="card-wrapper">
+                <div className="card-content">
+                    <div className="author-info">
+                        <img src={author.profileSrc} alt={author.name} className="avatar" />
+                        <div className="author-details">
+                            <div className="author-name">{author.name}</div>
+                            <div className="time-info">9h ago in Announcements</div>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <h2>{post.title}</h2>
+                        <p>
+                            {post.richText}
+                        </p>
+                    </div>
+                    <div className="card-footer">
+                        {post.poll ?
+                            (
+                                <div className="poll">
+                                    <button className="poll-button">Poll</button>
+                                    <span>10 members have voted</span>
+                                </div>
+                            )
+                            : null
+                        }
+                        <div className="interactions">
+                            <div className="likes">
+                                <span role="img" aria-label="thumbs up">👍</span> {post.likes.length}
+                            </div>
+                            <div className="comments">
+                                <span role="img" aria-label="comments">💬</span> {post.comments.length}
+                            </div>
+                            <div className="commenters">
+                                <img src="https://via.placeholder.com/30" alt="commenter" />
+                                <img src="https://via.placeholder.com/30" alt="commenter" />
+                                <img src="https://via.placeholder.com/30" alt="commenter" />
+                                <span>Last comment 6h ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="gif">
+                    <img src="https://via.placeholder.com/100" alt="GIF" />
+                </div>
             </div>
         </div>
     );
