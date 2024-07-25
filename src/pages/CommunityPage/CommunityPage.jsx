@@ -3,49 +3,52 @@ import './CommunityPage.css';
 
 import Post from '../../components/Post/Post';
 
-const mockPost = {
-    title: "LIVE NU",
-    richText: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore temporibus dolorem perferendis! Quae itaque impedit, distinctio asperiores quam sit harum accusantium, maiores pariatur voluptatem blanditiis rerum quidem fuga iusto repellat.",
-    pinned: {
-        isPinned: true,
-        pinnedAt: new Date(),
-    },
-    poll: {
-        choices: [
-            {
-                choiceText: "Choice 1",
-                votes: ["1", "2", "8"],
-            },
-            {
-                choiceText: "Choice 2",
-                votes: ["1", "2", "8"],
-            }
-        ]
-    },
-    likes: ["1", "2", "3"],
-    comments: [
-        {
-            authorId: "2",
-            text: "test",
-            likes: ["1", "2"],
-            images: ["www.google.com"],
-            createdAt: new Date()
+import { faker } from '@faker-js/faker';
+
+function generateMockPost() {
+    return {
+        title: faker.lorem.words(),
+        richText: faker.lorem.paragraphs(),
+        pinned: {
+            isPinned: faker.datatype.boolean(),
+            pinnedAt: faker.date.recent(),
         },
-        {
-            authorId: "3",
-            text: "Lol",
-            likes: ["1"],
-            images: ["www.google.com"],
-            createdAt: new Date()
+        poll: {
+            choices: [
+                {
+                    choiceText: faker.lorem.words(),
+                    votes: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, () => faker.string.uuid()),
+                },
+                {
+                    choiceText: faker.lorem.words(),
+                    votes: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, () => faker.string.uuid()),
+                }
+            ]
         },
-    ]
+        likes: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, () => faker.string.uuid()),
+        comments: Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => ({
+            authorId: faker.string.uuid(),
+            text: faker.lorem.sentence(),
+            likes: Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => faker.string.uuid()),
+            images: [faker.image.url()],
+            createdAt: faker.date.recent()
+        })),
+        images: [faker.image.url(), faker.image.url()],
+        createdAt: faker.date.recent(),
+    };
 }
 
+function generateMockPosts(count) {
+    return Array.from({ length: count }, generateMockPost);
+}
+
+const mockPosts = generateMockPosts(10);
 
 function CommunityPage() {
     return (
         <div id="CommunityPage" className="page">
-            <Post post={mockPost} />
+            {/* TODO: SOrtera i tid + pinned */}
+            {mockPosts.map((postData, index) => (<Post key={index} post={postData} />))}
         </div>
     );
 }
