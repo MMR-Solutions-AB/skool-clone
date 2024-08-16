@@ -29,7 +29,8 @@ function Post({ post }) {
 
     function formatDate(date) {
         const now = new Date();
-        const diffInSeconds = Math.floor((now - date) / 1000);
+        const dateFromDB = new Date(date);
+        const diffInSeconds = Math.floor((now - dateFromDB) / 1000);
         const diffInMinutes = Math.floor(diffInSeconds / 60);
         const diffInHours = Math.floor(diffInMinutes / 60);
         const diffInDays = Math.floor(diffInHours / 24);
@@ -42,7 +43,7 @@ function Post({ post }) {
             return `${diffInDays} days ago`;
         } else {
             const options = { month: 'short', day: 'numeric' };
-            return date.toLocaleDateString('en-US', options);
+            return dateFromDB.toLocaleDateString('en-US', options);
         }
     }
 

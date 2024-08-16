@@ -2,7 +2,7 @@
 import './Navbar.css';
 
 import Container from './../Container/Container.jsx'; // Adjust the import path as necessary
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
@@ -29,7 +29,7 @@ function Navbar() {
 
                     {/* Community Specific nav */}
                     <div id="community-nav">
-                        <Link to="/" className="community-nav-item active">
+                        {/* <Link to="/" className="community-nav-item active">
                             Community
                         </Link>
                         <Link to="/classroom" className="community-nav-item">
@@ -46,7 +46,7 @@ function Navbar() {
                         </Link>
                         <Link to="/about" className="community-nav-item">
                             About
-                        </Link>
+                        </Link> */}
                     </div>
                 </Container>
             </nav>
